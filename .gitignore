@@ -5,6 +5,8 @@ node_modules/
 dist/
 .cache/
 coverage/
+.sites-runtime/
+.sites-checkout/
 *.log
 .DS_Store
 .env
