@@ -49,7 +49,7 @@ onMounted(() => {
       <a href="#top" class="nav-round nav-logo" data-nav-item="logo" :class="{ 'is-active': activeSection === 'about', 'is-on-color': onColor.has('logo') }" :aria-current="activeSection === 'about' ? 'location' : undefined" aria-label="Радион — в начало">
         <img src="/images/859-7065-imgImg.svg" width="42" height="46" alt="" />
       </a>
-      <div class="nav-menu">
+      <div class="nav-menu" data-nav-item="menu" :class="{ 'is-on-color': onColor.has('menu') }">
         <NavMenuLink href="#cases" item="cases" :active="activeSection === 'cases'" :on-color="onColor.has('cases')">кейсы</NavMenuLink>
         <NavMenuLink href="#about" item="about" :on-color="onColor.has('about')">кто я?</NavMenuLink>
         <NavMenuLink href="#contacts" item="contacts" :active="activeSection === 'contacts'" :on-color="onColor.has('contacts')">контакты</NavMenuLink>
@@ -64,10 +64,11 @@ onMounted(() => {
 .site-header { position: sticky; top: 20px; z-index: 10; margin-block-start: 20px; }
 .navigation { display: flex; align-items: center; justify-content: center; gap: 11px; width: fit-content; margin-inline: auto; font: 400 16px/1.2 var(--font-ui); }
 .nav-round, .nav-menu { background: var(--nav-surface); backdrop-filter: blur(10px); border-radius: 124px; }
-.nav-round { display: grid; place-items: center; inline-size: 70px; block-size: 72px; flex-shrink: 0; color: var(--text-secondary); transition: background var(--transition), transform var(--transition), color var(--transition); }
+.nav-round { display: grid; place-items: center; inline-size: 70px; block-size: 72px; flex-shrink: 0; color: var(--text-secondary); box-shadow: inset 0 0 0 1px var(--nav-border-color, transparent); transition: background var(--transition), box-shadow var(--transition), transform var(--transition), color var(--transition); }
 .nav-logo img { transition: transform 400ms var(--ease-out), filter 180ms ease-out; }
 .nav-logo:not(.is-active):hover img { filter: brightness(0) saturate(100%) invert(23%) sepia(16%) saturate(1000%) hue-rotate(179deg); }
-.nav-menu { display: flex; align-items: center; gap: 8px; padding: 16px; }
+.nav-menu { display: flex; align-items: center; gap: 8px; padding: 16px; box-shadow: 0 0 0 1px var(--nav-border-color, transparent); transition: background var(--transition), box-shadow var(--transition); }
+.nav-round.is-on-color, .nav-menu.is-on-color { background: var(--nav-surface-on-color); --nav-border-color: var(--nav-border-on-color); }
 .nav-logo.is-active img { filter: brightness(0) saturate(100%) invert(31%) sepia(94%) saturate(4562%) hue-rotate(347deg) brightness(100%) contrast(110%); }
 .nav-round:hover { color: var(--text-primary); }
 .nav-round.is-on-color { --nav-outline-color: #fff; color: #fff; outline-color: currentColor; }

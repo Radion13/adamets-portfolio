@@ -27,6 +27,8 @@
   --background: #fbfbfb;
   --surface: #f4f4f4;
   --nav-surface: rgb(160 160 160 / 10%);
+  --nav-surface-on-color: rgb(133 131 131 / 25%);
+  --nav-border-on-color: rgb(255 255 255 / 50%);
   --nav-hover: rgb(160 160 160 / 18%);
   --text-primary: #343f53;
   --text-secondary: #575e65;
