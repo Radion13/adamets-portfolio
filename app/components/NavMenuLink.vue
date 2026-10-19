@@ -75,7 +75,7 @@ function onFocus(event: FocusEvent) {
 .nav-menu-link:hover, .nav-menu-link:focus-visible { color: var(--text-primary); }
 .nav-menu-link.is-active { color: var(--accent); }
 .nav-menu-link.is-on-color { --nav-outline-color: #fff; color: #fff; outline-color: currentColor; }
-.nav-hover-line { position: absolute; inset-inline: 14px; bottom: 5px; width: calc(100% - 28px); height: 8px; overflow: visible; pointer-events: none; opacity: 0; transition: opacity 120ms ease-out; }
+.nav-hover-line { position: absolute; inset-inline: 14px; bottom: 1px; width: calc(100% - 28px); height: 8px; overflow: visible; pointer-events: none; opacity: 0; transition: opacity 120ms ease-out; }
 .nav-hover-line path { fill: none; stroke: var(--nav-outline-color, var(--accent)); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke 180ms ease-out; }
 .nav-hover-line.is-visible { opacity: 1; }
 .nav-hover-line.is-visible path { animation: draw-underline 380ms cubic-bezier(0.45, 0, 0.2, 1) both; }
