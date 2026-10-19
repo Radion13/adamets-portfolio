@@ -48,9 +48,9 @@ onMounted(() => {
         <img src="/images/859-7065-imgImg.svg" width="42" height="46" alt="" />
       </a>
       <div class="nav-menu">
-        <a href="#cases" :class="{ 'is-active': activeSection === 'cases' }" :aria-current="activeSection === 'cases' ? 'location' : undefined">кейсы</a>
+        <a href="#cases" :class="{ 'is-active': activeSection === 'cases' }" :aria-current="activeSection === 'cases' ? 'location' : undefined">кейсы<NavActiveOutline :active="activeSection === 'cases'" /></a>
         <a href="#about">кто я?</a>
-        <a href="#contacts" :class="{ 'is-active': activeSection === 'contacts' }" :aria-current="activeSection === 'contacts' ? 'location' : undefined">контакты</a>
+        <a href="#contacts" :class="{ 'is-active': activeSection === 'contacts' }" :aria-current="activeSection === 'contacts' ? 'location' : undefined">контакты<NavActiveOutline :active="activeSection === 'contacts'" /></a>
       </div>
       <a v-if="resumeUrl" :href="resumeUrl" class="nav-round" target="_blank" rel="noopener noreferrer" aria-label="Открыть резюме">cv</a>
       <button v-else type="button" class="nav-round" aria-label="Резюме — скоро" @click="emit('notify', 'Резюме скоро появится здесь.')">cv</button>
@@ -67,10 +67,8 @@ onMounted(() => {
 .nav-logo:not(.is-active):hover img { filter: brightness(0) saturate(100%) invert(23%) sepia(16%) saturate(1000%) hue-rotate(179deg); }
 .nav-menu { display: flex; align-items: center; gap: 8px; padding: 16px; }
 .nav-menu a { position: relative; display: grid; place-items: center; min-block-size: 40px; padding: 10px 16px; border-radius: 40px; white-space: nowrap; color: var(--text-secondary); transition: background var(--transition), color var(--transition); }
-.nav-menu a::after { content: ''; position: absolute; inset: 2px; background: url('/images/nav-active-outline.svg') center / 100% 100% no-repeat; opacity: 0; transition: opacity var(--transition); pointer-events: none; }
 .nav-menu a:hover, .nav-menu a:focus-visible { color: var(--text-primary); }
 .nav-menu a.is-active { color: var(--accent); }
-.nav-menu a.is-active::after { opacity: 1; }
 .nav-logo.is-active img { filter: brightness(0) saturate(100%) invert(31%) sepia(94%) saturate(4562%) hue-rotate(347deg) brightness(100%) contrast(110%); }
 .nav-round:hover { color: var(--text-primary); }
 @media (max-width: 600px) {
