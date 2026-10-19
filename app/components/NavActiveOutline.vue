@@ -10,6 +10,6 @@ defineProps<{ active: boolean }>()
 
 <style scoped>
 .nav-outline { position: absolute; inset: 2px; width: calc(100% - 4px); height: calc(100% - 4px); overflow: visible; pointer-events: none; }
-.nav-outline path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; transition: stroke-dashoffset 160ms ease-in, opacity 160ms ease-in; }
-.nav-outline.is-drawn path { stroke-dashoffset: 0; opacity: 1; transition: stroke-dashoffset 600ms cubic-bezier(0.45, 0, 0.2, 1), opacity 80ms linear; }
+.nav-outline path { fill: none; stroke: var(--nav-outline-color, var(--accent)); stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; transition: stroke-dashoffset 160ms ease-in, opacity 160ms ease-in, stroke 180ms ease-out; }
+.nav-outline.is-drawn path { stroke-dashoffset: 0; opacity: 1; transition: stroke-dashoffset 600ms cubic-bezier(0.45, 0, 0.2, 1), opacity 80ms linear, stroke 180ms ease-out; }
 </style>

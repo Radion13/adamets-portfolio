@@ -8,11 +8,11 @@ const artwork = computed(() => caseArtwork[props.artwork])
 
 <template>
   <button class="case-card mini-card" type="button" :aria-label="`${title} — кейс скоро появится`" @click="emit('notify', `«${title}» — кейс скоро появится.`)">
-    <span class="mini-card-surface">
+    <span class="mini-card-surface" data-nav-backdrop>
       <span class="mini-card-heading">{{ title }}</span>
       <img class="coming-soon" src="/images/859-7027-imgFrame2147237444.svg" width="92" height="36" alt="Скоро" loading="lazy" />
       <CaseDoodle v-for="doodle in artwork.doodles" :key="doodle.node" :doodle="doodle" :canvas="artwork.size" />
-      <img class="mini-phone" src="/images/phone-documents.png" width="594" height="785" alt="Интерфейс раздела «Все документы» в приложении банка" loading="lazy" />
+      <img class="mini-phone" data-nav-backdrop-ignore src="/images/phone-documents.png" width="594" height="785" alt="Интерфейс раздела «Все документы» в приложении банка" loading="lazy" />
     </span>
   </button>
 </template>

@@ -11,9 +11,9 @@ function closeOnBackdrop(event: MouseEvent) {
 
 <template>
   <button class="case-card featured-card" type="button" aria-haspopup="dialog" aria-label="Посмотреть кейс: раздел «Госуслуги»" @click="caseDialog?.showModal()">
-    <span class="featured-surface">
+    <span class="featured-surface" data-nav-backdrop>
       <CaseDoodle v-for="doodle in artwork.doodles" :key="doodle.node" :doodle="doodle" :canvas="artwork.size" />
-      <img class="featured-phone" src="/images/phone-services.png" width="667" height="1020" alt="Раздел «Госуслуги»: документы, налоги, штрафы и другие сервисы" loading="lazy" />
+      <img class="featured-phone" data-nav-backdrop-ignore src="/images/phone-services.png" width="667" height="1020" alt="Раздел «Госуслуги»: документы, налоги, штрафы и другие сервисы" loading="lazy" />
       <span class="feature-copy">
         <span class="feature-title">Раздел «Госуслуги»</span>
         <span class="feature-description">Спроектировал ключевые сценарии работы продукта и с нуля разработал интерфейс.</span>

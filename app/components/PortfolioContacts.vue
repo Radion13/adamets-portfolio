@@ -12,8 +12,8 @@ const emit = defineEmits<{ notify: [message: string] }>()
       <h2 id="contacts-title">Давайте вместе создадим что-то значимое,<br class="desktop-break" /> напишите мне в:</h2>
       <ul class="contact-list">
         <li v-for="contact in contacts" :key="contact.label">
-          <a v-if="contact.href" :href="contact.href" class="contact-button" target="_blank" rel="noopener noreferrer">{{ contact.label }}</a>
-          <button v-else class="contact-button" type="button" :aria-label="`${contact.label} — ссылка появится позже`" @click="emit('notify', `Ссылка на ${contact.label} скоро появится.`)">{{ contact.label }}</button>
+          <a v-if="contact.href" :href="contact.href" class="contact-button" data-nav-backdrop target="_blank" rel="noopener noreferrer">{{ contact.label }}</a>
+          <button v-else class="contact-button" data-nav-backdrop type="button" :aria-label="`${contact.label} — ссылка появится позже`" @click="emit('notify', `Ссылка на ${contact.label} скоро появится.`)">{{ contact.label }}</button>
         </li>
       </ul>
     </div>
