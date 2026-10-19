@@ -11,13 +11,15 @@ function notify(text: string) {
   <a class="skip-link" href="#main">К содержимому</a>
   <div id="top" class="portfolio">
     <PortfolioNav @notify="notify" />
-    <main id="main" class="page-container">
-      <PortfolioHero />
-      <WorkExperience />
-      <PortfolioCases @notify="notify" />
-      <PortfolioContacts @notify="notify" />
+    <main id="main">
+      <div class="page-container">
+        <PortfolioHero />
+        <WorkExperience />
+      </div>
+      <PortfolioCases class="page-container page-container--fluid" @notify="notify" />
+      <PortfolioContacts class="page-container page-container--fluid" @notify="notify" />
     </main>
-    <footer class="page-container site-footer">
+    <footer class="page-container page-container--fluid site-footer">
       <p>© 2026 · Все права защищены</p>
       <a href="#top" class="back-to-top">
         <img src="/images/859-7062-imgIcon.svg" alt="" width="14" height="30" />
