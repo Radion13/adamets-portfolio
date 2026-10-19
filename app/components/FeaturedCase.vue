@@ -2,6 +2,8 @@
 import { caseArtwork } from '~/data/caseArtwork'
 
 const artwork = caseArtwork.featured
+// Reveal from the left edge toward the phone on the right.
+const orderedDoodles = [...artwork.doodles].sort((left, right) => left.hover[0] - right.hover[0])
 const caseDialog = useTemplateRef<HTMLDialogElement>('caseDialog')
 
 function closeOnBackdrop(event: MouseEvent) {
@@ -12,7 +14,7 @@ function closeOnBackdrop(event: MouseEvent) {
 <template>
   <button class="case-card featured-card" type="button" aria-haspopup="dialog" aria-label="Посмотреть кейс: раздел «Госуслуги»" @click="caseDialog?.showModal()">
     <span class="featured-surface" data-nav-backdrop>
-      <CaseDoodle v-for="doodle in artwork.doodles" :key="doodle.node" :doodle="doodle" :canvas="artwork.size" />
+      <CaseDoodle v-for="(doodle, index) in orderedDoodles" :key="doodle.node" :doodle="doodle" :canvas="artwork.size" :enter-delay="index * 140" />
       <img class="featured-phone" data-nav-backdrop-ignore src="/images/phone-services.png" width="667" height="1020" alt="Раздел «Госуслуги»: документы, налоги, штрафы и другие сервисы" loading="lazy" />
       <span class="feature-copy">
         <span class="feature-title">Раздел «Госуслуги»</span>

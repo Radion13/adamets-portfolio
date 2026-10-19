@@ -5,6 +5,7 @@ import type { ArtworkPose, CaseDoodle } from '~/data/caseArtwork'
 const props = defineProps<{
   doodle: CaseDoodle
   canvas: readonly [width: number, height: number]
+  enterDelay?: number
 }>()
 
 function center([x, y, width, height, rotation]: ArtworkPose) {
@@ -19,6 +20,7 @@ const style = computed<CSSProperties>(() => {
   const rest = center(props.doodle.rest)
   const hover = center(props.doodle.hover)
   return {
+    '--doodle-enter-delay': `${props.enterDelay ?? 0}ms`,
     '--doodle-x': `${(rest[0] / props.canvas[0] * 100).toFixed(6)}%`,
     '--doodle-y': `${(rest[1] / props.canvas[1] * 100).toFixed(6)}%`,
     '--doodle-width': `${(props.doodle.size[0] / props.canvas[0] * 100).toFixed(6)}%`,
@@ -40,6 +42,10 @@ const style = computed<CSSProperties>(() => {
 <style scoped>
 .case-doodle { position: absolute; inset: 0; z-index: 1; pointer-events: none; transition: transform var(--card-motion-duration) var(--card-motion-easing); }
 .case-doodle img { position: absolute; left: var(--doodle-x); top: var(--doodle-y); width: var(--doodle-width); height: auto; transform: translate(-50%, -50%) rotate(var(--doodle-rest-rotation)) scale(var(--doodle-rest-scale)); transition: transform var(--card-motion-duration) var(--card-motion-easing); }
-:global(.case-card:is(:hover, :focus-visible) .case-doodle) { transform: translate(var(--doodle-travel-x), var(--doodle-travel-y)); }
-:global(.case-card:is(:hover, :focus-visible) .case-doodle img) { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+:global(.case-card:is(:hover, :focus-visible) .case-doodle) { transform: translate(var(--doodle-travel-x), var(--doodle-travel-y)); transition-delay: var(--doodle-enter-delay); }
+:global(.case-card:is(:hover, :focus-visible) .case-doodle img) { transform: translate(-50%, -50%) rotate(0deg) scale(1); transition-delay: var(--doodle-enter-delay); }
+@media (prefers-reduced-motion: reduce) {
+  :global(.case-card:is(:hover, :focus-visible) .case-doodle),
+  :global(.case-card:is(:hover, :focus-visible) .case-doodle img) { transition-delay: 0s; }
+}
 </style>
