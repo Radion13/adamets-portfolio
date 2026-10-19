@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   href: string
   item: string
   active?: boolean
@@ -17,12 +17,12 @@ const strokes = [
 const variant = shallowRef(0)
 const pointerInside = shallowRef(false)
 const keyboardFocus = shallowRef(false)
-const visible = computed(() => pointerInside.value || keyboardFocus.value)
+const visible = computed(() => !props.active && (pointerInside.value || keyboardFocus.value))
 const stroke = computed(() => strokes[variant.value]!)
 let hasEntered = false
 
 function chooseStroke() {
-  if (visible.value) return
+  if (props.active || visible.value) return
   variant.value = hasEntered ? (variant.value + 1) % strokes.length : Math.floor(Math.random() * strokes.length)
   hasEntered = true
 }
