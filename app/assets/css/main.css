@@ -44,7 +44,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-block-start: 32px; }
+html { scroll-behavior: smooth; scroll-padding-block-start: 32px; scrollbar-gutter: stable; }
 body { margin: 0; background: var(--background); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
 body:has(dialog[open]) { overflow: hidden; }
 button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const notification = shallowRef<{ text: string; id: number } | null>(null)
+const isLoading = shallowRef(false)
 let notificationId = 0
 
 function notify(text: string) {
@@ -8,8 +9,9 @@ function notify(text: string) {
 </script>
 
 <template>
-  <a class="skip-link" href="#main">К содержимому</a>
-  <div id="top" class="portfolio">
+  <SiteLoader @start="isLoading = true" @finish="isLoading = false" />
+  <a class="skip-link" href="#main" :inert="isLoading">К содержимому</a>
+  <div id="top" class="portfolio" :inert="isLoading" :aria-busy="isLoading || undefined">
     <PortfolioNav @notify="notify" />
     <main id="main">
       <div class="page-container">

@@ -19,14 +19,14 @@ const style = computed<CSSProperties>(() => {
   const rest = center(props.doodle.rest)
   const hover = center(props.doodle.hover)
   return {
-    '--doodle-x': `${rest[0] / props.canvas[0] * 100}%`,
-    '--doodle-y': `${rest[1] / props.canvas[1] * 100}%`,
-    '--doodle-width': `${props.doodle.size[0] / props.canvas[0] * 100}%`,
-    '--doodle-travel-x': `${(hover[0] - rest[0]) / props.canvas[0] * 100}%`,
-    '--doodle-travel-y': `${(hover[1] - rest[1]) / props.canvas[1] * 100}%`,
+    '--doodle-x': `${(rest[0] / props.canvas[0] * 100).toFixed(6)}%`,
+    '--doodle-y': `${(rest[1] / props.canvas[1] * 100).toFixed(6)}%`,
+    '--doodle-width': `${(props.doodle.size[0] / props.canvas[0] * 100).toFixed(6)}%`,
+    '--doodle-travel-x': `${((hover[0] - rest[0]) / props.canvas[0] * 100).toFixed(6)}%`,
+    '--doodle-travel-y': `${((hover[1] - rest[1]) / props.canvas[1] * 100).toFixed(6)}%`,
     // The original hover SVG already includes its Figma rotation.
-    '--doodle-rest-rotation': `${props.doodle.hover[4] - props.doodle.rest[4]}deg`,
-    '--doodle-rest-scale': props.doodle.rest[2] / props.doodle.hover[2],
+    '--doodle-rest-rotation': `${(props.doodle.hover[4] - props.doodle.rest[4]).toFixed(6)}deg`,
+    '--doodle-rest-scale': (props.doodle.rest[2] / props.doodle.hover[2]).toFixed(6),
   }
 })
 </script>
