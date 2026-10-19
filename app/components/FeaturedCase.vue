@@ -11,13 +11,13 @@ function closeOnBackdrop(event: MouseEvent) {
 
 <template>
   <button class="case-card featured-card" type="button" aria-haspopup="dialog" aria-label="Посмотреть кейс: раздел «Госуслуги»" @click="caseDialog?.showModal()">
-    <CaseDoodle v-for="doodle in artwork.doodles" :key="doodle.node" :doodle="doodle" :canvas="artwork.size" />
-    <span class="featured-mask">
+    <span class="featured-surface">
+      <CaseDoodle v-for="doodle in artwork.doodles" :key="doodle.node" :doodle="doodle" :canvas="artwork.size" />
       <img class="featured-phone" src="/images/phone-services.png" width="667" height="1020" alt="Раздел «Госуслуги»: документы, налоги, штрафы и другие сервисы" loading="lazy" />
-    </span>
-    <span class="feature-copy">
-      <span class="feature-title">Раздел «Госуслуги»</span>
-      <span class="feature-description">Спроектировал ключевые сценарии работы продукта и с нуля разработал интерфейс.</span>
+      <span class="feature-copy">
+        <span class="feature-title">Раздел «Госуслуги»</span>
+        <span class="feature-description">Спроектировал ключевые сценарии работы продукта и с нуля разработал интерфейс.</span>
+      </span>
     </span>
   </button>
   <dialog ref="caseDialog" class="case-dialog" aria-labelledby="case-dialog-title" @click="closeOnBackdrop">
@@ -37,12 +37,12 @@ function closeOnBackdrop(event: MouseEvent) {
 </template>
 
 <style scoped>
-.featured-card { --card-motion-duration: 300ms; --card-motion-easing: ease-out; grid-column: 1 / -1; aspect-ratio: 933 / 586; background: url('/images/859-7026-imgShape.svg') center / 100% 100% no-repeat; margin-inline-end: 6px; }
-.featured-card::before { content: ''; position: absolute; inset: 0; background: url('/images/cases/829-7283.svg') center / 100% 100% no-repeat; opacity: 0; transition: opacity var(--card-motion-duration) var(--card-motion-easing); }
-.featured-card:is(:hover, :focus-visible)::before { opacity: 1; }
+.featured-card { --card-motion-duration: 300ms; --card-motion-easing: ease-out; grid-column: 1 / -1; aspect-ratio: 933 / 586; margin-inline-end: 6px; }
+.featured-surface { position: absolute; inset: 0; background: #f4f4f5; mask: url('/images/859-7026-imgShape.svg') center / 100% 100% no-repeat; }
+.featured-surface::before { content: ''; position: absolute; inset: 0; background: url('/images/cases/featured-card-fill.svg') center / 100% 100% no-repeat; opacity: 0; transition: opacity var(--card-motion-duration) var(--card-motion-easing); }
+.featured-card:is(:hover, :focus-visible) .featured-surface::before { opacity: 1; }
 .featured-card:is(:hover, :focus-visible) .feature-copy { color: white; }
-.featured-mask { position: absolute; z-index: 2; inset: 0; mask: url('/images/859-7026-imgShape.svg') center / 100% 100% no-repeat; pointer-events: none; }
-.featured-phone { position: absolute; top: 12.97%; left: 49.04%; width: 35.74%; height: auto; }
+.featured-phone { position: absolute; z-index: 2; top: 12.97%; left: 49.04%; width: 35.74%; height: auto; pointer-events: none; }
 .feature-copy { position: absolute; z-index: 3; top: 63.65%; left: 8.79%; width: 36.66%; display: grid; gap: 1.71cqw; text-align: start; color: var(--text-body); transition: color 300ms ease-out; }
 .feature-title { font-size: 3.43cqw; font-weight: 700; line-height: 1.19; }
 .feature-description { font-size: 2.572cqw; line-height: 1.21; font-weight: 500; }
@@ -57,10 +57,9 @@ function closeOnBackdrop(event: MouseEvent) {
 .dialog-copy > p:not(.dialog-eyebrow) { font-size: 22px; line-height: 1.4; margin-block-end: 20px; }
 .dialog-phone { display: block; width: 100%; height: auto; align-self: end; }
 @media (max-width: 550px) {
-  .featured-card { aspect-ratio: 0.75; margin: 0; background-size: cover; border-radius: 48px; overflow: hidden; background-color: var(--surface); }
-  .featured-card::before { background-size: cover; }
+  .featured-card { aspect-ratio: 0.75; margin: 0; border-radius: 48px; overflow: hidden; }
   .featured-card :deep(.case-doodle) { top: 42%; }
-  .featured-mask { mask: none; }
+  .featured-surface { mask: none; }
   .featured-phone { width: 64%; left: 35%; top: 42%; }
   .feature-copy { top: 8%; left: 8%; width: 82%; gap: 12px; }
   .feature-title { font-size: 8cqw; }

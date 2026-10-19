@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" width="462.439" height="522.259" viewBox="0 0 462.439 522.259" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="462.439" height="522.259" fill="url(#card-fill)"/>
+<defs>
+<radialGradient id="card-fill" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(231.219 288.749) rotate(90) scale(242.633 214.842)">
+<stop stop-color="#980705"/>
+<stop offset="1" stop-color="#FE0B09"/>
+</radialGradient>
+</defs>
+</svg>
