@@ -50,9 +50,9 @@ onMounted(() => {
         <img src="/images/859-7065-imgImg.svg" width="42" height="46" alt="" />
       </a>
       <div class="nav-menu">
-        <a href="#cases" data-nav-item="cases" :class="{ 'is-active': activeSection === 'cases', 'is-on-color': onColor.has('cases') }" :aria-current="activeSection === 'cases' ? 'location' : undefined">кейсы<NavActiveOutline :active="activeSection === 'cases'" /></a>
-        <a href="#about" data-nav-item="about" :class="{ 'is-on-color': onColor.has('about') }">кто я?</a>
-        <a href="#contacts" data-nav-item="contacts" :class="{ 'is-active': activeSection === 'contacts', 'is-on-color': onColor.has('contacts') }" :aria-current="activeSection === 'contacts' ? 'location' : undefined">контакты<NavActiveOutline :active="activeSection === 'contacts'" /></a>
+        <NavMenuLink href="#cases" item="cases" :active="activeSection === 'cases'" :on-color="onColor.has('cases')">кейсы</NavMenuLink>
+        <NavMenuLink href="#about" item="about" :on-color="onColor.has('about')">кто я?</NavMenuLink>
+        <NavMenuLink href="#contacts" item="contacts" :active="activeSection === 'contacts'" :on-color="onColor.has('contacts')">контакты</NavMenuLink>
       </div>
       <a v-if="resumeUrl" :href="resumeUrl" class="nav-round" data-nav-item="resume" :class="{ 'is-on-color': onColor.has('resume') }" target="_blank" rel="noopener noreferrer" aria-label="Открыть резюме">cv</a>
       <button v-else type="button" class="nav-round" data-nav-item="resume" :class="{ 'is-on-color': onColor.has('resume') }" aria-label="Резюме — скоро" @click="emit('notify', 'Резюме скоро появится здесь.')">cv</button>
@@ -68,12 +68,9 @@ onMounted(() => {
 .nav-logo img { transition: transform 400ms var(--ease-out), filter 180ms ease-out; }
 .nav-logo:not(.is-active):hover img { filter: brightness(0) saturate(100%) invert(23%) sepia(16%) saturate(1000%) hue-rotate(179deg); }
 .nav-menu { display: flex; align-items: center; gap: 8px; padding: 16px; }
-.nav-menu a { position: relative; display: grid; place-items: center; min-block-size: 40px; padding: 10px 16px; border-radius: 40px; white-space: nowrap; color: var(--text-secondary); transition: background var(--transition), color var(--transition); }
-.nav-menu a:hover, .nav-menu a:focus-visible { color: var(--text-primary); }
-.nav-menu a.is-active { color: var(--accent); }
 .nav-logo.is-active img { filter: brightness(0) saturate(100%) invert(31%) sepia(94%) saturate(4562%) hue-rotate(347deg) brightness(100%) contrast(110%); }
 .nav-round:hover { color: var(--text-primary); }
-.nav-menu a.is-on-color, .nav-round.is-on-color { --nav-outline-color: #fff; color: #fff; outline-color: currentColor; }
+.nav-round.is-on-color { --nav-outline-color: #fff; color: #fff; outline-color: currentColor; }
 .nav-logo.is-on-color img, .nav-logo.is-on-color:hover img { filter: brightness(0) invert(1); }
 @media (max-width: 600px) {
   .site-header { top: 16px; margin-block-start: 20px; }
@@ -81,11 +78,9 @@ onMounted(() => {
   .nav-round { inline-size: 48px; block-size: 52px; }
   .nav-logo img { inline-size: 31px; block-size: auto; }
   .nav-menu { gap: 0; padding: 4px; }
-  .nav-menu a { padding: 12px 10px; min-block-size: 44px; }
 }
 @media (max-width: 360px) {
   .navigation { gap: 4px; font-size: 12px; }
-  .nav-menu a { padding-inline: 8px; }
   .nav-round { inline-size: 44px; }
 }
 </style>
