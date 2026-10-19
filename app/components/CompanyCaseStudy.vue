@@ -27,7 +27,7 @@ defineProps<{ company: PortfolioCompany }>()
 .company-case-study { display: grid; grid-template-columns: minmax(0, 461fr) minmax(0, 939fr); gap: 16px; margin-block-start: 7px; color: var(--text-body); font-family: var(--font-body); }
 .company-case-study + .company-case-study { margin-block-start: 104px; }
 /* The article is the sticky boundary, so each company's description exits with its own cards. */
-.case-description { position: sticky; top: 112px; align-self: start; padding: 0 32px 0 0; }
+.case-description { position: sticky; top: 112px; align-self: start; padding: 0 54px 0 0; }
 .company-cards { min-width: 0; }
 .bank-link { display: flex; align-items: center; gap: 12px; width: fit-content; }
 .bank-link img { flex-shrink: 0; }
