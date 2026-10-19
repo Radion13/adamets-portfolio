@@ -13,10 +13,10 @@ defineProps<{ title: string; icon: 'work' | 'cases' }>()
 <style scoped>
 .section-heading { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 8px; }
 .section-heading img { flex-shrink: 0; }
-.section-heading--work img { transform: translateX(60px) rotate(90deg); }
-h2 { font: 700 54px/1.26 var(--font-hand); }
+.section-heading--work img { transform: rotate(90deg); }
+h2 { font: 700 54px/1.26 var(--font-hand); text-align: center; }
 @media (max-width: 700px) {
   h2 { font-size: 44px; }
-  .section-heading--work img { inline-size: 50px; block-size: 50px; transform: translateX(48px) rotate(90deg); }
+  .section-heading--work img { inline-size: 50px; block-size: 50px; }
 }
 </style>

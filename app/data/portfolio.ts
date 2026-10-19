@@ -30,8 +30,8 @@ export const eurasianBank: PortfolioCompany = {
 }
 
 export const upcomingCases = [
-  { title: 'Мои документы', doodles: ['documents-id.png', 'documents-passport.png'] },
-  { title: 'Покупка госномера', doodles: ['plates-number.png'] },
-  { title: 'Регистрация брака', doodles: ['marriage-dove.png', 'marriage-glasses.png'] },
-  { title: 'Регистрация ип', doodles: [] },
-]
+  { title: 'Мои документы', artwork: 'documents' },
+  { title: 'Покупка госномера', artwork: 'plates' },
+  { title: 'Регистрация брака', artwork: 'marriage' },
+  { title: 'Регистрация ип', artwork: 'business' },
+] as const

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { caseArtwork } from '~/data/caseArtwork'
+
+const artwork = caseArtwork.featured
 const caseDialog = useTemplateRef<HTMLDialogElement>('caseDialog')
 
 function closeOnBackdrop(event: MouseEvent) {
@@ -8,8 +11,7 @@ function closeOnBackdrop(event: MouseEvent) {
 
 <template>
   <button class="case-card featured-card" type="button" aria-haspopup="dialog" aria-label="Посмотреть кейс: раздел «Госуслуги»" @click="caseDialog?.showModal()">
-    <span class="feature-doodle feature-doodle--one" aria-hidden="true"><img src="/images/859-7026-imgIcon.svg" width="77" height="50" alt="" loading="lazy" /></span>
-    <span class="feature-doodle feature-doodle--two" aria-hidden="true"><img src="/images/859-7026-imgFrame2147237445.svg" width="63" height="60" alt="" loading="lazy" /></span>
+    <CaseDoodle v-for="doodle in artwork.doodles" :key="doodle.node" :doodle="doodle" :canvas="artwork.size" />
     <span class="featured-mask">
       <img class="featured-phone" src="/images/phone-services.png" width="667" height="1020" alt="Раздел «Госуслуги»: документы, налоги, штрафы и другие сервисы" loading="lazy" />
     </span>
@@ -35,21 +37,15 @@ function closeOnBackdrop(event: MouseEvent) {
 </template>
 
 <style scoped>
-.featured-card { grid-column: 1 / -1; aspect-ratio: 933 / 586; background: url('/images/859-7026-imgShape.svg') center / 100% 100% no-repeat; margin-inline-end: 6px; }
-.featured-card::before { content: ''; position: absolute; inset: 0; background: var(--accent); mask: url('/images/859-7026-imgShape.svg') center / 100% 100% no-repeat; opacity: 0; transition: opacity 300ms ease-out; }
+.featured-card { --card-motion-duration: 300ms; --card-motion-easing: ease-out; grid-column: 1 / -1; aspect-ratio: 933 / 586; background: url('/images/859-7026-imgShape.svg') center / 100% 100% no-repeat; margin-inline-end: 6px; }
+.featured-card::before { content: ''; position: absolute; inset: 0; background: url('/images/cases/829-7283.svg') center / 100% 100% no-repeat; opacity: 0; transition: opacity var(--card-motion-duration) var(--card-motion-easing); }
 .featured-card:is(:hover, :focus-visible)::before { opacity: 1; }
 .featured-card:is(:hover, :focus-visible) .feature-copy { color: white; }
-.featured-mask { position: absolute; inset: 0; mask: url('/images/859-7026-imgShape.svg') center / 100% 100% no-repeat; }
-.featured-phone { position: absolute; top: 12.97%; left: 49.04%; width: 35.74%; height: auto; transition: transform 700ms var(--spring); }
-.feature-copy { position: absolute; top: 63.65%; left: 8.79%; width: 36.66%; display: grid; gap: 1.71cqw; text-align: start; color: var(--text-body); transition: color 300ms ease-out; }
+.featured-mask { position: absolute; z-index: 2; inset: 0; mask: url('/images/859-7026-imgShape.svg') center / 100% 100% no-repeat; pointer-events: none; }
+.featured-phone { position: absolute; top: 12.97%; left: 49.04%; width: 35.74%; height: auto; }
+.feature-copy { position: absolute; z-index: 3; top: 63.65%; left: 8.79%; width: 36.66%; display: grid; gap: 1.71cqw; text-align: start; color: var(--text-body); transition: color 300ms ease-out; }
 .feature-title { font-size: 3.43cqw; font-weight: 700; line-height: 1.19; }
 .feature-description { font-size: 2.572cqw; line-height: 1.21; font-weight: 500; }
-.feature-doodle { position: absolute; transition: transform 700ms var(--spring); }
-.feature-doodle--one { top: 29.08%; left: 53.6%; transform: rotate(45deg); }
-.feature-doodle--two { top: 49.15%; left: 61.4%; transform: rotate(-15deg); }
-.featured-card:is(:hover, :focus-visible) .featured-phone { transform: translateY(-2px); }
-.featured-card:is(:hover, :focus-visible) .feature-doodle--one { transform: translate(-160px, -40px) rotate(15deg); }
-.featured-card:is(:hover, :focus-visible) .feature-doodle--two { transform: translate(-160px, -70px) rotate(5deg); }
 .case-dialog { border: 0; border-radius: 36px; padding: 0; width: min(960px, calc(100% - 40px)); max-height: calc(100dvh - 48px); background: var(--background); color: var(--text-body); font-family: var(--font-body); }
 .case-dialog::backdrop { background: rgb(24 33 48 / 35%); backdrop-filter: blur(8px); }
 .dialog-content { position: relative; display: grid; grid-template-columns: 1fr 0.8fr; align-items: start; gap: 40px; padding: 64px 48px 0; }
@@ -61,14 +57,14 @@ function closeOnBackdrop(event: MouseEvent) {
 .dialog-copy > p:not(.dialog-eyebrow) { font-size: 22px; line-height: 1.4; margin-block-end: 20px; }
 .dialog-phone { display: block; width: 100%; height: auto; align-self: end; }
 @media (max-width: 550px) {
-  .featured-card { aspect-ratio: 0.9; margin: 0; background-size: cover; border-radius: 48px; overflow: hidden; background-color: var(--surface); }
+  .featured-card { aspect-ratio: 0.75; margin: 0; background-size: cover; border-radius: 48px; overflow: hidden; background-color: var(--surface); }
+  .featured-card::before { background-size: cover; }
+  .featured-card :deep(.case-doodle) { top: 42%; }
   .featured-mask { mask: none; }
-  .featured-phone { width: 61%; left: 40%; top: 23%; }
-  .feature-copy { top: 12%; left: 8%; width: 82%; gap: 12px; }
+  .featured-phone { width: 64%; left: 35%; top: 42%; }
+  .feature-copy { top: 8%; left: 8%; width: 82%; gap: 12px; }
   .feature-title { font-size: 8cqw; }
-  .feature-description { font-size: 5.8cqw; width: 40%; padding-block-start: 24px; }
-  .feature-doodle--one { top: 40%; left: 58%; }
-  .feature-doodle--two { top: 64%; left: 62%; }
+  .feature-description { font-size: 5.8cqw; }
   .dialog-content { grid-template-columns: 1fr; padding: 60px 24px 0; gap: 20px; }
   .dialog-copy h2 { font-size: 32px; }
   .dialog-phone { max-width: 260px; margin-inline: auto; }
