@@ -61,7 +61,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.site-header { position: sticky; top: 32px; z-index: 10; margin-block-start: 32px; }
+.site-header { position: sticky; top: 20px; z-index: 10; margin-block-start: 20px; }
 .navigation { display: flex; align-items: center; justify-content: center; gap: 11px; width: fit-content; margin-inline: auto; font: 400 16px/1.2 var(--font-ui); }
 .nav-round, .nav-menu { background: var(--nav-surface); backdrop-filter: blur(10px); border-radius: 124px; }
 .nav-round { display: grid; place-items: center; inline-size: 70px; block-size: 72px; flex-shrink: 0; color: var(--text-secondary); transition: background var(--transition), transform var(--transition), color var(--transition); }
@@ -73,7 +73,6 @@ onMounted(() => {
 .nav-round.is-on-color { --nav-outline-color: #fff; color: #fff; outline-color: currentColor; }
 .nav-logo.is-on-color img, .nav-logo.is-on-color:hover img { filter: brightness(0) invert(1); }
 @media (max-width: 600px) {
-  .site-header { top: 16px; margin-block-start: 20px; }
   .navigation { gap: 6px; font-size: 13px; }
   .nav-round { inline-size: 48px; block-size: 52px; }
   .nav-logo img { inline-size: 31px; block-size: auto; }
