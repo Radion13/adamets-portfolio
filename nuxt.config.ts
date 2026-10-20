@@ -14,7 +14,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#fbfbfb' },
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2' },
         { rel: 'preload', href: '/fonts/caveat.ttf', as: 'font', type: 'font/ttf', crossorigin: 'anonymous' },
       ],
     },
