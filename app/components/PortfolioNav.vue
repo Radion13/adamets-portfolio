@@ -2,12 +2,13 @@
 import { resumeUrl } from '~/data/portfolio'
 
 const emit = defineEmits<{ notify: [message: string] }>()
-const activeSection = shallowRef<'about' | 'cases' | 'contacts'>('about')
+const activeSection = shallowRef<'intro' | 'about' | 'cases' | 'contacts'>('intro')
 const navigation = useTemplateRef<HTMLElement>('navigation')
 const onColor = useNavigationContrast(navigation)
 
 onMounted(() => {
   const cases = document.getElementById('cases')
+  const about = document.getElementById('about')
   const contacts = document.querySelector('#contacts .contact-doodle')
   let frame = 0
 
@@ -17,10 +18,12 @@ onMounted(() => {
     const atPageEnd = window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2
     if (contacts && (contacts.getBoundingClientRect().top <= activationLine || atPageEnd)) {
       activeSection.value = 'contacts'
+    } else if (about && about.getBoundingClientRect().top <= activationLine) {
+      activeSection.value = 'about'
     } else if (cases && cases.getBoundingClientRect().top <= activationLine) {
       activeSection.value = 'cases'
     } else {
-      activeSection.value = 'about'
+      activeSection.value = 'intro'
     }
   }
 
@@ -46,12 +49,12 @@ onMounted(() => {
 <template>
   <header class="site-header">
     <nav ref="navigation" class="navigation" aria-label="Основная навигация">
-      <a href="#top" class="nav-round nav-logo" data-nav-item="logo" :class="{ 'is-active': activeSection === 'about', 'is-on-color': onColor.has('logo') }" :aria-current="activeSection === 'about' ? 'location' : undefined" aria-label="Радион — в начало">
+      <a href="#top" class="nav-round nav-logo" data-nav-item="logo" :class="{ 'is-active': activeSection === 'intro', 'is-on-color': onColor.has('logo') }" :aria-current="activeSection === 'intro' ? 'location' : undefined" aria-label="Радион — в начало">
         <img src="/images/859-7065-imgImg.svg" width="42" height="46" alt="" />
       </a>
       <div class="nav-menu" data-nav-item="menu" :class="{ 'is-on-color': onColor.has('menu') }">
         <NavMenuLink href="#cases" item="cases" :active="activeSection === 'cases'" :on-color="onColor.has('cases')">кейсы</NavMenuLink>
-        <NavMenuLink href="#about" item="about" :on-color="onColor.has('about')">кто я?</NavMenuLink>
+        <NavMenuLink href="#about" item="about" :active="activeSection === 'about'" :on-color="onColor.has('about')">кто я?</NavMenuLink>
         <NavMenuLink href="#contacts" item="contacts" :active="activeSection === 'contacts'" :on-color="onColor.has('contacts')">контакты</NavMenuLink>
       </div>
       <a v-if="resumeUrl" :href="resumeUrl" class="nav-round" data-nav-item="resume" :class="{ 'is-on-color': onColor.has('resume') }" target="_blank" rel="noopener noreferrer" aria-label="Открыть резюме">cv</a>

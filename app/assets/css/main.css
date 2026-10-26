@@ -58,7 +58,7 @@ img { vertical-align: middle; }
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; }
 .portfolio { overflow: clip; }
 .page-container { max-inline-size: 1512px; margin-inline: auto; padding-inline: 48px; }
-.page-container--fluid { max-inline-size: none; }
+.page-container--fluid { max-inline-size: 1728px; }
 .case-card { container-type: inline-size; display: block; position: relative; width: 100%; min-width: 0; color: var(--text-body); font-family: var(--font-body); }
 .hand-divider { width: 100%; height: 7px; background: url('/images/859-6564-imgDivider.svg') center / 100% auto no-repeat; }
 .site-footer { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-block: 48px 72px; color: rgb(87 94 101 / 40%); }

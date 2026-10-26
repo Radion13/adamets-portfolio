@@ -1,5 +1,5 @@
 <template>
-  <section id="about" class="hero" aria-labelledby="intro-title">
+  <section id="intro" class="hero" aria-labelledby="intro-title">
     <div class="hero-copy">
       <h1 id="intro-title">Привет, я Радион</h1>
       <p class="intro">Проектирую интерфейсы с 2019 года.<br />Мне нравится создавать дизайн, обеспечивающий качественный и продуманный пользовательский опыт.</p>

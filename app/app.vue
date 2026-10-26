@@ -19,6 +19,7 @@ function notify(text: string) {
         <WorkExperience />
       </div>
       <PortfolioCases class="page-container page-container--fluid" @notify="notify" />
+      <PortfolioAbout class="page-container page-container--fluid" />
       <PortfolioContacts class="page-container page-container--fluid" @notify="notify" />
     </main>
     <footer class="page-container page-container--fluid site-footer">
