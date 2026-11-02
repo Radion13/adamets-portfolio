@@ -29,6 +29,9 @@ python3 -m http.server 3000 --directory .output/public
 
 Основной адрес: https://adamets.kz. `www.adamets.kz` перенаправляется на основной адрес.
 
+Репозиторий: [Radion13/adamets-portfolio](https://github.com/Radion13/adamets-portfolio).
+Проверки и публикации: [GitHub Actions](https://github.com/Radion13/adamets-portfolio/actions/workflows/pages.yml).
+
 Единственный рабочий канал публикации — GitHub Actions и GitHub Pages.
 Изменения можно вносить через редактор GitHub или локально с последующим `git push origin main`.
 После каждого push в `main` workflow `.github/workflows/pages.yml` устанавливает зависимости
@@ -41,6 +44,9 @@ Pull request запускает только проверку и сборку. �
 `adamets.kz`, HTTPS включён после выпуска сертификата. Базовый URL приложения — `/`.
 Workflow использует встроенный `GITHUB_TOKEN` и OIDC; отдельные токены и SSH-ключи
 для публикации в Actions не нужны.
+
+Служебная привязка проекта к ChatGPT Sites удалена. Старая закрытая копия Sites
+сохранена как резервная и не участвует в последующих публикациях.
 
 Для отката отмените нужный коммит через `git revert <SHA>` и отправьте результат в `main`.
 Откат пройдёт тот же цикл проверки и автоматической публикации.
